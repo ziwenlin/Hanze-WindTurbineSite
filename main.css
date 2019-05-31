@@ -134,3 +134,9 @@ footer img {
 .item:nth-child(3n+0) img {
     background-color: #666666aa;
 }
+
+@media only screen and (max-width: 600px) {
+    main {
+        grid-template-columns: auto;
+    }
+}
