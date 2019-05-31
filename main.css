@@ -95,14 +95,14 @@ footer img {
     user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
     font-style: normal;
     text-decoration: none;
-    color: #ffffff;
+    color: inherit;
 }
 
 .item:hover img {
     background-color: #0B70FF !important;;
 }
 
-.item:hover p {
+.item:hover p:nth-child(2) {
     transform: scale(1.2, 1.2) translate(2em, 0);
     font-weight: bold;
 }
@@ -124,15 +124,15 @@ footer img {
 
 
 .item:nth-child(3n+2) img {
-    background-color: #333333aa;
+    background-color: #333333aa !important;
 }
 
 .item:nth-child(3n+1) img {
-    background-color: #111111aa;
+    background-color: #111111aa !important;
 }
 
 .item:nth-child(3n+0) img {
-    background-color: #666666aa;
+    background-color: #666666aa !important;
 }
 
 @media only screen and (max-width: 960px) {
