@@ -1,0 +1,136 @@
+
+body {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Monospaced, monospace;
+    background-color: #888;
+    background-image: url("Images/Turbine.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #fff;
+    margin: 0;
+}
+
+main {
+    display: grid;
+    padding: 2%;
+    max-width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: 32% 32% 32%;
+    grid-column-gap: 2%;
+    min-height: 100vh;
+}
+
+img {
+    object-fit: cover;
+    /*max-width: 33%;*/
+    width: 80%;
+    margin: auto;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+footer {
+    grid-area: footer;
+    background-color: #555c;
+    overflow: auto;
+    padding: 12px 12px 12px 30px;
+    text-align: left;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+input {
+    width: 80%;
+}
+
+footer img {
+    width: 33%;
+}
+
+.graph {
+    width: 95%;
+}
+
+.column {
+    /*max-width: 33%;*/
+    /*padding: 1.2em;*/
+    /*min-height: 100px;*/
+    padding: 0.001em;
+}
+
+.row {
+    background-color: #444c;
+    padding: 0.001em;
+    margin-bottom: 2em;
+    /*backdrop-filter: blur(8px);*/
+    /*-webkit-backdrop-filter: blur(8px);*/
+}
+
+.row:hover {
+    background-color: #222222f0;
+    box-shadow: #222 12px 12px 20px;
+}
+
+.item {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.001em;
+    overflow: hidden;
+    display: block;
+}
+
+.nav {
+    font-size: 1.2em;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    font-style: normal;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.item:hover img {
+    background-color: #0B70FF !important;;
+}
+
+.item:hover p {
+    transform: scale(1.2, 1.2) translate(2em, 0);
+    font-weight: bold;
+}
+
+.item p {
+    margin-left: 4em;
+    transition-duration: 200ms;
+}
+
+.item img {
+    width: 2em;
+    padding: 0.5em;
+    float: left;
+    display: inline-block;
+    background-color: #555555dd;
+    transition-duration: 200ms;
+    box-shadow: #333 1px 12px 20px;
+}
+
+
+.item:nth-child(3n+2) img {
+    background-color: #333333aa;
+}
+
+.item:nth-child(3n+1) img {
+    background-color: #111111aa;
+}
+
+.item:nth-child(3n+0) img {
+    background-color: #666666aa;
+}
