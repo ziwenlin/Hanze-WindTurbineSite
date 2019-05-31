@@ -53,7 +53,8 @@ footer img {
 }
 
 .graph_wrapper {
-    width: 97%;
+    width: 95% !important;
+    /*padding: 1%;*/
 }
 
 .column {
