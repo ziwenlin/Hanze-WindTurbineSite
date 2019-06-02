@@ -54,6 +54,7 @@
                     window.localStorage.setItem('background', this.value);
                     window.localStorage.setItem('restore_settings', getUrlVars());
                     setBackgroundImage(this.value);
+                    if (this.value === '') document.body.style.backgroundImage = '';
                 };
             }
             if (element_input.name === 'copy_url') {
