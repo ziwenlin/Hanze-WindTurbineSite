@@ -55,6 +55,13 @@
                     setBackgroundImage(this.value);
                 };
             }
+            if (element_input.name === 'copy_url') {
+                element_input.value = getUrlVars();
+                element_input.onclick = function () {
+                    this.select();
+                    document.execCommand("copy");
+                };
+            }
             if (element_input.name === 'row_color') {
                 $(element_input).spectrum({
                     color: window.localStorage.getItem(element_input.name),
@@ -63,7 +70,7 @@
                     allowEmpty: true,
                     showAlpha: true,
                     move: function (color) {
-                        window.localStorage.setItem('row_color', color);
+                        window.localStorage.setItem('row_color', color.toHex8String());
                         setRowBackgroundColor(color)
                     },
                 })
@@ -76,12 +83,33 @@
                     allowEmpty: true,
                     showAlpha: true,
                     move: function (color) {
-                        window.localStorage.setItem('text_color', color);
+                        window.localStorage.setItem('text_color', color.toHex8String());
                         setTextColor(color)
                     },
                 })
             }
         }
+    };
+    var setUrlVars = function () {
+        var vars = {};
+        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            localStorage.setItem(key, value);
+            vars[key] = value;
+        });
+        return vars;
+    };
+    var getUrlVars = function () {
+        var url = '';
+        var keys = ['background', 'row_color', 'text_color'];
+        for (var x in keys) {
+            var key = keys[x];
+            if (localStorage.length > x++) {
+                url += key + '=' + localStorage.getItem(key) + '&';
+            }
+        }
+        url = url.replace(/\s+/g, '');
+        console.log(url);
+        return window.location.host + window.location.pathname + '?' + url.slice(0, -1);
     };
     var inputEventClear = function () {
         var elements = document.querySelectorAll('body > div');
@@ -129,6 +157,7 @@
     window.addEventListener("load", function () {
         inputEventClear();
         inputEventMaker();
+        console.log(setUrlVars());
         setTimeout(setNavigation, 10);
         setChange('background', setBackgroundImage);
         setChange('row_color', setRowBackgroundColor);
@@ -138,4 +167,5 @@
         addGrid();
     });
 })();
+
 
