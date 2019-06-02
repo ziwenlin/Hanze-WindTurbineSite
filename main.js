@@ -169,10 +169,10 @@
     newRequest('navigation.html', addContentMain);
     setTimeout(newRequest, 100, 'home.html', addContent);
     window.addEventListener("load", function () {
+        setUrlVars();
+        setNavigation();
         inputEventClear();
         inputEventMaker();
-        setUrlVars();
-        setTimeout(setNavigation, 10);
         setChange('background', setBackgroundImage);
         setChange('row_color', setRowColor);
         setChange('text_color', setTextColor);
