@@ -48,21 +48,31 @@
         var elements_input = document.getElementsByTagName('input');
         for (var x in elements_input) {
             var element_input = elements_input[x];
-            element_input.value = window.localStorage.getItem(element_input.name);
             if (element_input.name === 'background') {
+                element_input.value = window.localStorage.getItem(element_input.name);
                 element_input.oninput = function () {
-                    window.localStorage.setItem(this.name, this.value);
+                    window.localStorage.setItem('background', this.value);
+                    window.localStorage.setItem('restore_settings', getUrlVars());
                     setBackgroundImage(this.value);
                 };
             }
             if (element_input.name === 'copy_url') {
-                element_input.value = getUrlVars();
+                element_input.value = window.location.host + window.location.pathname + '?' +  getUrlVars();
                 element_input.onclick = function () {
                     this.select();
                     document.execCommand("copy");
                 };
             }
+            if (element_input.name === 'restore_settings') {
+                element_input.onclick = function () {
+                    localStorage.getItem('restore_settings').replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                        localStorage.setItem(key, value);
+                    });
+                    window.location.href = window.location.origin + window.location.pathname;
+                };
+            }
             if (element_input.name === 'row_color') {
+                element_input.value = window.localStorage.getItem(element_input.name);
                 $(element_input).spectrum({
                     color: window.localStorage.getItem(element_input.name),
                     preferredFormat: "hex",
@@ -70,12 +80,14 @@
                     allowEmpty: true,
                     showAlpha: true,
                     move: function (color) {
-                        window.localStorage.setItem('row_color', color.toHex8String());
-                        setRowBackgroundColor(color)
+                        window.localStorage.setItem('row_color', color);
+                        window.localStorage.setItem('restore_settings', getUrlVars());
+                        setRowColor(color)
                     },
                 })
             }
             if (element_input.name === 'text_color') {
+                element_input.value = window.localStorage.getItem(element_input.name);
                 $(element_input).spectrum({
                     color: window.localStorage.getItem(element_input.name),
                     preferredFormat: "hex",
@@ -83,7 +95,8 @@
                     allowEmpty: true,
                     showAlpha: true,
                     move: function (color) {
-                        window.localStorage.setItem('text_color', color.toHex8String());
+                        window.localStorage.setItem('text_color', color);
+                        window.localStorage.setItem('restore_settings', getUrlVars());
                         setTextColor(color)
                     },
                 })
@@ -109,7 +122,7 @@
         }
         url = url.replace(/\s+/g, '');
         console.log(url);
-        return window.location.host + window.location.pathname + '?' + url.slice(0, -1);
+        return url.slice(0, -1);
     };
     var inputEventClear = function () {
         var elements = document.querySelectorAll('body > div');
@@ -132,8 +145,7 @@
             }
         }
     };
-
-    var setRowBackgroundColor = function (color) {
+    var setRowColor = function (color) {
         var rows = document.getElementsByClassName('row');
         if (rows.length > 0) {
             for (var y in rows) {
@@ -152,15 +164,16 @@
         var prop = localStorage.getItem(str);
         if (prop !== "" && prop != null) func(prop);
     };
+    document.navigation = document.querySelector('main').innerHTML;
     newRequest('navigation.html', addContentMain);
     setTimeout(newRequest, 100, 'home.html', addContent);
     window.addEventListener("load", function () {
         inputEventClear();
         inputEventMaker();
-        console.log(setUrlVars());
+        setUrlVars();
         setTimeout(setNavigation, 10);
         setChange('background', setBackgroundImage);
-        setChange('row_color', setRowBackgroundColor);
+        setChange('row_color', setRowColor);
         setChange('text_color', setTextColor);
         wrapElement('.graph', 'div', 'graph_wrapper');
         wrapElement('label', 'p');

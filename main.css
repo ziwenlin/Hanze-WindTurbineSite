@@ -73,12 +73,26 @@ footer img {
     background-color: rgba(68, 68, 68, 0.8);
     padding: 0.001em;
     margin-bottom: 10px;
+    position: relative;
     /*backdrop-filter: blur(8px);*/
     /*-webkit-backdrop-filter: blur(8px);*/
 }
 
-.row:hover {
-    background-color: rgba(34, 34, 34, 0.94);
+.row:before {
+    display: block;
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    background: rgb(4, 4, 4);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.0;
+}
+
+.row:hover:before {
+    opacity: 0.8;
     box-shadow: #000000 12px 12px 20px;
 }
 
@@ -105,7 +119,7 @@ footer img {
 }
 
 .item:hover img {
-    background-color: #0b70ff !important;;
+    background-color: #0b70ff !important;
 }
 
 .item:hover p:nth-child(2) {
@@ -145,6 +159,7 @@ footer img {
     .grid_item {
         width: calc(99% - 32px);
     }
+
     .item:hover p {
         transform: scale(1.2, 1.2) translate(4em, 0);
         font-weight: bold;
