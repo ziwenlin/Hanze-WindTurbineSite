@@ -1,75 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Grun Wind Overview</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css"/>
-</head>
-<body>
-
-<main>
-    <div class="column">
-        <div class="row">
-            <img src="Images/HanzeLogo.png" style="padding: 0.5em;" alt=""/>
-            <h2 style="padding: 0.1em 1.2em;">Grun Wind History</h2>
-        </div>
-        <div class="row">
-            <a class="item nav" href="index.html">
-                <img src="Icons/Home.png" alt=""/>
-                <p>Home</p>
-            </a>
-            <a class="item nav" href="overview.html">
-                <img src="Icons/Overview.png" alt=""/>
-                <p>Overview</p>
-            </a>
-            <a class="item nav" href="history.html">
-                <img src="Icons/History.png" alt=""/>
-                <p>History</p>
-            </a>
-            <a class="item nav" href="controls.html">
-                <img src="Icons/Controls.png" alt=""/>
-                <p>Controls</p>
-            </a>
-            <a class="item nav" href="settings.html">
-                <img src="Icons/Settings.png" alt=""/>
-                <p>Settings</p>
-            </a>
-        </div>
-    </div>
-    <div class="column">
-        <div class="row">
-            <canvas class="graph" id="graph_production" height="280">production</canvas>
-        </div>
-        <div class="row">
-            <canvas class="graph" id="graph_rotation" height="280">wind</canvas>
-        </div>
-        <div class="row">
-            <canvas class="graph" id="graph_temp" height="280">wind</canvas>
-        </div>
-    </div>
-    <div class="column">
-        <div class="row">
-            <canvas class="graph" id="graph_windspeed" height="280">production</canvas>
-        </div>
-        <div class="row">
-            <canvas class="graph" id="graph_vibration" height="280">wind</canvas>
-        </div>
-        <div class="row">
-            <canvas class="graph" id="graph_water" height="280">wind</canvas>
-        </div>
-    </div>
-
-</main>
-<footer>
-    <img src="Images/HanzeLogo.png" style="transform: translate(-4%, 0px); float: right;"/>
-    <p>Institute of Engineering</p>
-    <p>Electrical Engineering & Mechanical Engineering</p>
-    <p>Copyright© 2017-2021</p>
-</footer>
-
-</body>
-</html>
-<script src="main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="chart.js"></script>
+<div class="row grid_item">
+    <canvas class="graph" id="graph_production">production</canvas>
+</div>
+<div class="row grid_item">
+    <canvas class="graph" id="graph_windspeed">production</canvas>
+</div>
+<div class="row grid_item">
+    <canvas class="graph" id="graph_rotation">wind</canvas>
+</div>
+<div class="row grid_item">
+    <canvas class="graph" id="graph_vibration">wind</canvas>
+</div>
+<div class="row grid_item">
+    <canvas class="graph" id="graph_temp">wind</canvas>
+</div>
+<div class="row grid_item">
+    <canvas class="graph" id="graph_water">wind</canvas>
+</div>

@@ -1,6 +1,8 @@
 Chart.defaults.global.defaultFontColor = 'white';
 Chart.defaults.global.defaultFontSize = 14;
 Chart.defaults.global.defaultColor = "FF9B00CC";
+Chart.defaults.global.responsive = true;
+Chart.defaults.global.maintainAspectRatio = false;
 Chart.defaults.global.legend.labels.fontSize = 18;
 Chart.defaults.global.elements.line.pointRadius = 10;
 Chart.defaults.global.elements.line.pointHoverRadius = 10;
@@ -14,9 +16,9 @@ Chart.defaults.global.tooltips.animationDuration = 200;
 Chart.defaults.global.hover.mode = 'index';
 Chart.defaults.global.hover.intersect = false;
 Chart.defaults.global.hover.animationDuration = 200;
-Chart.defaults.global.animation.responsive = true;
-Chart.defaults.global.animation.maintainAspectRatio = true;
-Chart.defaults.global.animation.duration = 20;
+// Chart.defaults.global.animation.responsive = true;
+// Chart.defaults.global.animation.maintainAspectRatio = true;
+// Chart.defaults.global.animation.duration = 20;
 Chart.defaults.scale.gridLines.color = '#ccc';
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({
@@ -49,15 +51,14 @@ function makeGraph(id, data) {
         return;
     }
     const ctx = canvas.getContext('2d');
-    const chart = new Chart(ctx, {
+    return new Chart(ctx, {
         type: 'LineWithLine',
         data: data,
         options: {}
     });
-    return chart;
 }
 
-(function () {
+window.addEventListener("load", function () {
     makeGraph('graph_generator', {
         labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         datasets: [{
@@ -121,4 +122,4 @@ function makeGraph(id, data) {
             data: [0, 232, 342, 543, 788, 835, 932, 1037, 1109, 1151, 1221, 435, 11, 0, 0, 438]
         }]
     });
-})();
+});
