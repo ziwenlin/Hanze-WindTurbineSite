@@ -7,7 +7,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    color: #fff;
+    color: rgb(255, 255, 255);
     margin: 0;
 }
 
@@ -35,7 +35,7 @@ img {
 
 footer {
     grid-area: footer;
-    background-color: #111c;
+    background-color: rgba(17, 17, 17, 0.8);
     overflow: auto;
     padding: 12px 12px 12px 30px;
     text-align: left;
@@ -70,7 +70,7 @@ footer img {
 }
 
 .row {
-    background-color: #444c;
+    background-color: rgba(68, 68, 68, 0.8);
     padding: 0.001em;
     margin-bottom: 10px;
     /*backdrop-filter: blur(8px);*/
@@ -78,8 +78,8 @@ footer img {
 }
 
 .row:hover {
-    background-color: #222222f0;
-    box-shadow: #000 12px 12px 20px;
+    background-color: rgba(34, 34, 34, 0.94);
+    box-shadow: #000000 12px 12px 20px;
 }
 
 .item {
@@ -105,7 +105,7 @@ footer img {
 }
 
 .item:hover img {
-    background-color: #0B70FF !important;;
+    background-color: #0b70ff !important;;
 }
 
 .item:hover p:nth-child(2) {
@@ -123,22 +123,22 @@ footer img {
     padding: 0.5em;
     float: left;
     display: inline-block;
-    background-color: #555555dd;
+    background-color: rgba(85, 85, 85, 0.87);
     transition-duration: 200ms;
-    box-shadow: #000 1px 12px 20px;
+    box-shadow: #000000 1px 12px 20px;
 }
 
 
 .item:nth-child(3n+2) img {
-    background-color: #333333aa !important;
+    background-color: rgba(51, 51, 51, 0.67) !important;
 }
 
 .item:nth-child(3n+1) img {
-    background-color: #111111aa !important;
+    background-color: rgba(17, 17, 17, 0.67) !important;
 }
 
 .item:nth-child(3n+0) img {
-    background-color: #666666aa !important;
+    background-color: rgba(102, 102, 102, 0.67) !important;
 }
 
 @media only screen and (max-width: 960px) {

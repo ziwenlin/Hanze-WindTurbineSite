@@ -81,8 +81,8 @@ window.addEventListener("load", function () {
         labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         datasets: [{
             label: 'Wind speed [m/s]',
-            backgroundColor: '#FF9B0019',
-            borderColor: '#FF9B00E6',
+            backgroundColor: 'rgba(255,155,0,0.1)',
+            borderColor: 'rgba(255,155,0,0.9)',
             data: [0, 1.4, 3.7, 5.9, 7.2, 9.9, 12.3, 13.2, 14.2, 14.6, 14.9, 15.2, 15.8, 16.3, 17.1, 14.3]
         }]
     });
