@@ -5,7 +5,6 @@
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                 if (httpRequest.status === 200) {
                     func(httpRequest.responseText);
-                    window.dispatchEvent(new Event('load'));
                 }
             }
         };
@@ -17,6 +16,7 @@
         if (mains.length > 0) {
             mains[0].innerHTML = document.navigation + text;
         }
+        window.dispatchEvent(new Event('load'));
     };
     var addContentMain = function (text) {
         document.navigation = text;
@@ -125,7 +125,7 @@
         if (prop !== "" && prop != null) func(prop);
     };
     newRequest('navigation.html', addContentMain);
-    setTimeout(newRequest, 10, 'home.html', addContent);
+    setTimeout(newRequest, 100, 'home.html', addContent);
     window.addEventListener("load", function () {
         inputEventClear();
         inputEventMaker();
