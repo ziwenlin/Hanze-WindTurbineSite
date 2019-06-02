@@ -51,6 +51,7 @@
             if (element_input.name === 'background') {
                 element_input.value = window.localStorage.getItem(element_input.name);
                 element_input.oninput = function () {
+                    this.select();
                     window.localStorage.setItem('background', this.value);
                     window.localStorage.setItem('restore_settings', getUrlVars());
                     setBackgroundImage(this.value);
