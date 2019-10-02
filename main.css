@@ -35,7 +35,7 @@ img {
 
 footer {
     grid-area: footer;
-    background-color: rgba(17, 17, 17, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     overflow: auto;
     padding: 12px 12px 12px 30px;
     text-align: left;
@@ -70,7 +70,7 @@ footer img {
 }
 
 .row {
-    background-color: rgba(68, 68, 68, 0.8);
+    background-color: rgba(8, 8, 8, 0.7);
     padding: 0.001em;
     margin-bottom: 10px;
     position: relative;
@@ -89,6 +89,7 @@ footer img {
     right: 0;
     bottom: 0;
     opacity: 0.0;
+    transition-duration: 150ms;
 }
 
 .row:hover:before {
@@ -163,5 +164,9 @@ footer img {
     .item:hover p {
         transform: scale(1.2, 1.2) translate(4em, 0);
         font-weight: bold;
+    }
+
+    .graph_wrapper {
+        height: 90vh;
     }
 }

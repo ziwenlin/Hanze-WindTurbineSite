@@ -1,5 +1,5 @@
 (function () {
-    var newRequest = function (url, func) {
+    var HTTPRequest = function (url, func) {
         var httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -18,10 +18,10 @@
         }
         window.dispatchEvent(new Event('load'));
     };
-    var addContentMain = function (text) {
+    var setupContentMain = function (text) {
         document.navigation = text;
     };
-    var addGrid = function () {
+    var setupMasonryGrid = function () {
         document.masonry = new Masonry('main', {
             columnWidth: '.grid_item',
             itemSelector: '.grid_item',
@@ -44,7 +44,7 @@
         }
 
     };
-    var inputEventMaker = function () {
+    var SpectrumInputEventMaker = function () {
         var elements_input = document.getElementsByTagName('input');
         for (var x in elements_input) {
             var element_input = elements_input[x];
@@ -105,7 +105,14 @@
             }
         }
     };
-    var setUrlVars = function () {
+    var SpectrumInputEventClear = function () {
+        var elements = document.querySelectorAll('body > div');
+        for (var x in elements) {
+            var element = elements[x];
+            element.outerHTML = '';
+        }
+    };
+    var setupUrlVars = function () {
         var vars = {};
         window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
             localStorage.setItem(key, value);
@@ -126,14 +133,7 @@
         console.log(url);
         return url.slice(0, -1);
     };
-    var inputEventClear = function () {
-        var elements = document.querySelectorAll('body > div');
-        for (var x in elements) {
-            var element = elements[x];
-            element.outerHTML = '';
-        }
-    };
-    var setNavigation = function () {
+    var setupNavigation = function () {
         var navigations = document.getElementsByClassName('nav');
         if (navigations.length > 0) {
             for (var x in navigations) {
@@ -141,7 +141,7 @@
                 if (navigations.length > x) {
                     navigation.onclick = function () {
                         var url = this.getAttribute('href');
-                        newRequest(url, addContent);
+                        HTTPRequest(url, addContent);
                     };
                 }
             }
@@ -162,24 +162,24 @@
     var setTextColor = function (color) {
         document.body.style.color = color;
     };
-    var setChange = function (str, func) {
+    var applyLocalStorageSettings = function (str, func) {
         var prop = localStorage.getItem(str);
         if (prop !== "" && prop != null) func(prop);
     };
     document.navigation = document.querySelector('main').innerHTML;
-    newRequest('navigation.html', addContentMain);
-    setTimeout(newRequest, 100, 'home.html', addContent);
+    HTTPRequest('navigation.html', setupContentMain);
+    setTimeout(HTTPRequest, 100, 'home.html', addContent);
     window.addEventListener("load", function () {
-        setUrlVars();
-        setNavigation();
-        inputEventClear();
-        inputEventMaker();
-        setChange('background', setBackgroundImage);
-        setChange('row_color', setRowColor);
-        setChange('text_color', setTextColor);
+        setupUrlVars();
+        setupNavigation();
+        SpectrumInputEventClear();
+        SpectrumInputEventMaker();
+        applyLocalStorageSettings('background', setBackgroundImage);
+        applyLocalStorageSettings('row_color', setRowColor);
+        applyLocalStorageSettings('text_color', setTextColor);
         wrapElement('.graph', 'div', 'graph_wrapper');
         wrapElement('label', 'p');
-        addGrid();
+        setupMasonryGrid();
     });
 })();
 
